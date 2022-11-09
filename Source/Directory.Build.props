@@ -14,6 +14,9 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <AssemblyOriginatorKeyFile>..\..\Assets\EasyNetQ.snk</AssemblyOriginatorKeyFile>
+    <!-- Work around generated csproj can't find the signing key. -->
+    <!-- https://github.com/dotnet/BenchmarkDotNet/issues/836 -->
+    <AssemblyOriginatorKeyFile Condition="EXISTS('../../../../../../Assets/EasyNetQ.snk')">../../../../../../Assets/EasyNetQ.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign>false</PublicSign>
     <NoWarn>$(NoWarn);1591;8002</NoWarn>
